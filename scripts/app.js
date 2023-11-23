@@ -3,8 +3,14 @@
 let habbits = [];
 const HABBIT_KEY = "HABBIT_KEY";
 
-const page = { // Описание работы нашего объекта
+const page = {
+  // Описание работы нашего объекта
   menu: document.querySelector(".menu__list"),
+  header: {
+    h1: document.querySelector(".h1"),
+    progressPersent: document.querySelector(".progress__percent"),
+    progressCoverBar: document.querySelector(".progress__cover-bar"),
+  },
 };
 
 /**
@@ -31,7 +37,7 @@ function saveData() {
  * RENDER
  */
 
-function rerenderMenu(activeHabbit) {
+function renderMenu(activeHabbit) {
   if (!activeHabbit) {
     return;
   }
@@ -42,7 +48,7 @@ function rerenderMenu(activeHabbit) {
       const element = document.createElement("button");
       element.setAttribute("menu-habbit-id", habbit.id);
       element.classList.add("menu__item");
-      element.addEventListener("click", () => rerender(habbit.id));
+      element.addEventListener("click", () => render(habbit.id));
       element.innerHTML = `<img src="./images/${habbit.icon}.svg" alt="${habbit.name}"></img>`;
       if (activeHabbit.id === habbit.id) {
         element.classList.add("menu__item_active");
@@ -59,12 +65,21 @@ function rerenderMenu(activeHabbit) {
 }
 
 function renderHead(activeHabbit) {
-  
+  if (!activeHabbit) {
+    return;
+  }
+  page.header.h1.innerText = activeHabbit.name;
+  const progress =
+    activeHabbit.days.length / activeHabbit.target > 1
+      ? 100
+      : (activeHabbit.days.length / activeHabbit.target) * 100;
+  page.header.progressPersent.innerText = progress.toFixed(0) + '%'
+  page.header.progressCoverBar.setAttribute('style', `width: ${progress}%`)
 }
 
-function rerender(activeHabbitId) {
+function render(activeHabbitId) {
   const activeHabbit = habbits.find((habbit) => habbit.id === activeHabbitId);
-  rerenderMenu(activeHabbit);
+  renderMenu(activeHabbit);
   renderHead(activeHabbit);
 }
 
@@ -73,7 +88,7 @@ function rerender(activeHabbitId) {
  */
 (() => {
   loadData();
-  rerender(habbits[0].id);
+  render(habbits[0].id);
 })();
 
 // Переменная которая хранит ID активной вкладки
