@@ -155,7 +155,7 @@ main {
 	margin-bottom: 12px;
 }
 
-.habbit_day {
+.habbit__day {
 	background: #efecfd;
 	border-radius: 10px 0 0 10px;
 	border-right: 1px solid #FBFAFF;
@@ -165,13 +165,13 @@ main {
 	min-width: 150px
 }
 
-.habbit_comment {
+.habbit__comment {
 	font-size: 14px;
 	line-height: 18px;
 	padding: 20px 25px;
 }
 
-.habbit_delete {
+.habbit__delete {
 	margin-left: auto;
 	margin-right: 10px;
 	background: none;
@@ -180,7 +180,7 @@ main {
 	border-radius: 5px;
 }
 
-.habbit_delete:hover {
+.habbit__delete:hover {
 	background: #eff2ff
 }
 
@@ -200,7 +200,7 @@ input::placeholder {
 	color: #8899a8
 }
 
-.habbit_form {
+.habbit__form {
 	display: flex;
 	gap: 15px;
 	width: 100%;
