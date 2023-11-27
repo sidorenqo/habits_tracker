@@ -103,12 +103,21 @@ function render(activeHabbitId) {
 }
 
 /**
+ * Работа с днями
+ */
+
+function addDays(event) {
+  event.preventDefault();
+  console.log(event);
+  const data = new FormData(event.target);
+  console.log(data.get("comment"));
+  console.log(data.getAll("comment"));
+}
+
+/**
  * INIT
  */
 (() => {
   loadData();
   render(habbits[0].id);
 })();
-
-// Переменная которая хранит ID активной вкладки
-// Обработчие событий на каждую меняющий активный ID
