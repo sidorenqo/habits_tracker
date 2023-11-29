@@ -249,9 +249,9 @@ input.error {
 	justify-content: center;
 }
 
-/* .cover_hidden {
+.cover_hidden {
 	display: none;
-} */
+}
 
 .popup {
 	background: #fff;
@@ -335,3 +335,4 @@ h2 {
 .popup__form input {
 	width: 100%;
 }
+
